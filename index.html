@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Event Timer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="css/flat-ui.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    
+    <style type = "text/css">
+    
+    .sidebar-wrap
+    {
+      margin : 150px 0 0 0;
+    }
+    
+    .sidebar
+    {
+        list-style-type : none;
+        font-size : 24px;
+        margin : 10px 0;
+        padding : 5px 0;
+    }
+    .sidebar li
+    {
+      margin : 5px 0;
+    }
+    
+    .sidebar a
+    {
+       display : block;
+       border-width : thick;
+       line-height : 1.2;
+       color : #34495E;
+       padding : 8px 0px 8px 30px;
+    }
+    .sidebar a:hover
+    {
+       border-left : solid;
+       color : #71808E;
+    }
+
+    .sidebar .active a
+    {
+      border-left : solid;
+      color : #E74C3C;
+    }
+    
+    .li-subtitle
+    {
+      font-size : 90%;
+    }
+    
+     
+    .heading-wrap
+    {
+      position : fixed;
+      top : 0; left : 0;
+      width : 100%;
+      z-index : 1;
+      background-color : #2C3E50;
+      color : #ECF0F1;
+    }
+    
+    .heading
+    {
+    	margin-left : 120px;
+		  margin-bottom : 30px;
+	  }
+   
+    .footer-wrap
+    {
+      background-color : #2C3E50;
+      color : #ECF0F1;
+      width : 100%;
+    }
+    
+    .display-time
+    {
+      font-size : 140%;
+      padding-left : 30px;
+      padding-right : 30px;
+    }
+    
+    .main-body
+    {
+    	padding-top : 150px;
+	  }
+	  
+    .title-time
+    {
+    }
+    
+	  .content
+	  {
+	    position : fixed;
+	    top : 150px;
+	    width : 40%;
+	    padding : 0px 10px 0px 10px;
+    }
+
+    .content p 
+    {
+      font-size : 22px;
+      margin : 0.5em 0em;
+      line-height : 1.3;
+    }
+    
+    .tab-content
+    {
+      margin : 0px 0px 40px 0px;
+    }
+    
+	  .span-time
+	  {
+	    float : right;
+    }
+    .span-time:before
+    {
+      content : "------";
+    }
+    
+    .timer-wrap
+    {
+      border-top : solid;
+      border-width : medium;
+      padding-top : 5px;
+    }
+    
+    #preparation
+    {
+      padding-bottom : 100%;
+    }
+  </style>
+    
+  </head>
+  <body>
+    <div class="container">
+        <div class = "row">
+            <div class = "col-mod-12 heading-wrap">
+            	<div class = "heading">
+                	<h1> NHSDLC Xiamen Regional</h1>
+            	</div>
+            </div>
+        </div>
+        
+            <div class = "row content">
+                  <div class = "tab-content">
+                    <div class = "tab-pane active" id = "preparation">
+                      <h4>Coin Toss</h4>
+                      <p>EVERY round begins with a coin toss; the winning team has the option of choosing either the side (affirmative or negative) or the speaking order (first or second) in the round;
+the losing team makes the remaining choice, either side or speaking order. 
+<p>AFTER the coin toss, record the following (the team on the left speaks first and should sit to the
+judge’s left):</p>
+                      <div class = "btn-group">
+                        <button type = "button" class = "btn btn-wide btn-lg btn-inverse" id = "coin-toss"    >Toss a Coin</button>
+                        <button type = "button" class = "btn btn-lg disabled btn-inverse" id = "front-side"   >Front side</button>
+                        <button type = "button" class = "btn btn-lg disabled btn-inverse" id = "reverse-side" >Reverse side</button>
+                      </div> <!-- btn-group -->
+                    </div> <!-- tab-pane-->
+                  
+                    <div class = "tab-pane " id = "cs-1">
+                      <h4 class = "title-time">Speaker 1 <span class = "span-time">5min</span> </h4>
+                      <p>Preparation time should NOT be used in this stage.</p>
+                      <div class = "timer " id = "timer-cs-1" max-time = "5min"></div>
+                    </div> <!-- tab-pane-->
+                    
+                    <div class = "tab-pane " id = "cs-2">
+                      <h4 class = "title-time">Speaker 2 <span class = "span-time">5min</span> </h4>
+                      <p>Preparation time should NOT be used in this stage.</p>
+                      <div class = "timer " id = "timer-cs-2" max-time = "5min"></div>
+                    </div> <!-- tab-pane-->
+                    
+                    <div class = "tab-pane" id = "cf-12">
+                      <h4 class = "title-time">Crossfire(1&2) <span class = "span-time">3min</span> </h4>
+                      <p>The first question is asked by the earlier speaker.</p>
+                      <p>Preparation time should NOT be used in this stage.</p>
+                      <div class = "timer" id = "timer-cf-12" max-time = "3min"></div>
+                    </div>  <!-- tab-pane-->
+                    
+                    <div class = "tab-pane " id = "rb-3">
+                      <h4 class = "title-time">Speaker 3 <span class = "span-time">4min</span> </h4>
+                      <div class = "timer " id = "timer-rb-3" max-time = "4min"></div>
+                    </div> <!-- tab-pane-->
+                  
+                    <div class = "tab-pane " id = "rb-4">
+                      <h4 class = "title-time">Speaker 4 <span class = "span-time">4min</span> </h4>
+                      <div class = "timer " id = "timer-rb-4" max-time = "4min"></div>
+                    </div> <!-- tab-pane-->
+                    
+                    <div class = "tab-pane" id = "cf-34">
+                      <h4 class = "title-time">Crossfire(3&4) <span class = "span-time">3min</span> </h4>
+                      <p>The first question is asked by the earlier speaker.</p>
+                      <p>Preparation time should NOT be used in this stage.</p>
+                      <div class = "timer" id = "timer-cf-34" max-time = "3min"></div>
+                    </div>  <!-- tab-pane-->
+                    
+                    <div class = "tab-pane " id = "sm-1">
+                      <h4 class = "title-time">Speaker 1 Summary <span class = "span-time">2min</span> </h4>
+                      <div class = "timer " id = "timer-sm-1" max-time = "2min"></div>
+                    </div> <!-- tab-pane-->
+                    
+                    <div class = "tab-pane " id = "sm-2">
+                      <h4 class = "title-time">Speaker 2 Summary <span class = "span-time">2min</span> </h4>
+                      <div class = "timer " id = "timer-sm-2" max-time = "2min"></div>
+                    </div> <!-- tab-pane-->
+                  
+                    <div class = "tab-pane" id = "cf-1234">
+                      <h4 class = "title-time">Grand Crossfire(all) <span class = "span-time">3min</span> </h4>
+                      <p>The first question is asked by the earlier speaker.</p>
+                      <p>Preparation time should NOT be used in this stage.</p>
+                      <div class = "timer" id = "timer-cf-1234" max-time = "3min"></div>
+                    </div>  <!-- tab-pane-->
+                    
+                    <div class = "tab-pane " id = "ff-3">
+                      <h4 class = "title-time">Speaker 3 Final Focus <span class = "span-time">2min</span> </h4>
+                      <div class = "timer " id = "timer-ff-3" max-time = "2min"></div>
+                    </div> <!-- tab-pane-->
+                    
+                    <div class = "tab-pane " id = "ff-4">
+                      <h4 class = "title-time">Speaker 4 Final Focus <span class = "span-time">2min</span> </h4>
+                      <div class = "timer " id = "timer-ff-4" max-time = "2min"></div>
+                    </div> <!-- tab-pane-->
+                  </div><!--tab-content-->
+                
+                  <blockquote>
+                    <h6>Team A Preparation Time</h6>
+                    <div class = "timer-md" id = "timer-preb-a" max-time = "3min"></div>
+                  
+                    <h6>Team B Preparation Time</h6>
+                    <div class = "timer-md" id = "timer-prep-b" max-time = "3min"></div>
+                 </blockquote>
+            </div> <!-- content --> 
+        
+        <div class = "row sidebar-wrap">    
+            <div class = "col-md-6"></div>
+            <div class = "col-md-6">
+            <ul class = "sidebar">
+                <li class = "active">
+                  <a href="#preparation" data-toggle="tab">Getting Started</a>
+                </li>
+                <li>
+                  <a href="#cs-1" data-toggle="tab">
+                    Team A Constructive Speech <br/> <span class = "li-subtitle"> --Speaker 1 </span> 
+                  </a>
+                </li>
+                
+                <li>
+                  <a href="#cs-2" data-toggle="tab">Team B Constructive Speech <br/> <span class = "li-subtitle"> --Speaker 2 <span/> </a>
+                </li>
+                
+                <li>
+                  <a href="#cf-12" data-toggle="tab">
+                    Crossfire <br/> <span class = "li-subtitle">--Speaker 1&2<span/>
+                  </a>
+                </li>
+                
+                <li>
+                  <a href="#rb-3" data-toggle="tab">Team A Rebuttal <br/> <span class = "li-subtitle">--Speaker 3<span/></a>
+                </li>
+                <li>
+                  <a href="#rb-4" data-toggle="tab">Team B Rebuttal <br/> <span class = "li-subtitle">--Speaker 4<span/></a>
+                </li>
+                <li>
+                  <a href="#cf-34" data-toggle="tab">Crossfire <br/> <span class = "li-subtitle">--Speaker 3&4<span/></a>
+                </li>
+                <li>
+                  <a href="#sm-1" data-toggle="tab">Team A Summary <br/> <span class = "li-subtitle"> --Speaker 1 <span/> </a>
+                </li>
+                <li>
+                  <a href="#sm-2" data-toggle="tab">Team B Summary <br/> <span class = "li-subtitle"> --Speaker 2 <span/> </a>
+                </li>
+                <li>
+                  <a href="#cf-1234" data-toggle="tab">Grand Crossfire <br/> <span class = "li-subtitle">--All Speakers <span/></a></li>
+                <li>
+                  <a href="#ff-3" data-toggle="tab">Team A Final Focus <br/> <span class = "li-subtitle">--Speaker 3<span/></a>
+                </li>
+                <li>
+                  <a href="#ff-4" data-toggle="tab">Team B Final Focus <br/> <span class = "li-subtitle">--Speaker 4<span/></a>
+                </li>
+            </ul>
+            </div>   
+        </div>
+    </div> 
+    <!-- /.container -->
+   
+   <div class = "footer-wrap">
+      <div class = "container">
+        <div class = "row">
+          <div class = "col-md-6">
+          </div>
+          <div class = "col-md-6" style = "text-align:right">
+            <h6>Master_Miu Presented</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Load JS here for greater good =============================-->
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/flatui-checkbox.js"></script>
+    <script src="js/flatui-radio.js"></script>
+    <script src="js/jquery.tagsinput.js"></script>
+    <script src="js/jquery.placeholder.js"></script>
+	<script src="timing.js"></script>
+	  <script>
+	  	var frontend = {
+	  		"timer" :
+	  		'<form class="form-inline" role="form"><div class="form-group"><label class = "display-time" for="display-time-input"></label><input class="form-control sr-only" id="display-time-input"/ > </div><div class="btn-group"><button type = "button" class = "start  btn btn-hg btn-wide btn-inverse">Start</button><button type = "button" class = "pause  btn btn-hg btn-wide btn-inverse">Pause</button><button type = "button" class = "reset  btn btn-hg btn-danger">Reset</button></div></form>',
+	  		"timer-md" :
+	  		'<form class="form-inline" role="form"><div class="form-group"><label class = "display-time" for="display-time-input"></label><input class="form-control sr-only" id="display-time-input"/ > </div><div class="btn-group"><button type = "button" class = "start  btn btn-lg btn-wide btn-inverse">Start</button><button type = "button" class = "pause  btn btn-lg btn-wide btn-inverse">Pause</button><button type = "button" class = "reset  btn btn-lg btn-danger">Reset</button></div></form>'
+	  	};
+	    $(document).ready(function(){
+	      $("#coin-toss").click(function(){
+	        if ($("#front-side").hasClass("btn-danger") || $("#reverse-side").hasClass("btn-danger"))
+	        {
+	          $("#front-side").removeClass("btn-danger").addClass("btn-inverse");
+	          $("#reverse-side").removeClass("btn-danger").addClass("btn-inverse");
+          }
+          else
+          {
+	          var res = new Date().getTime() % 2;
+	          if (res) 
+	          {
+	            $("#front-side").removeClass("btn-inverse").addClass("btn-danger");
+            }
+            else
+            {
+              $("#reverse-side").removeClass("btn-inverse").addClass("btn-danger");
+            }
+          }
+        });
+        
+		    var lst = $(".timer").get();
+		    for(var x in lst)
+		    {
+			    createTimer("#" + lst[x].id,lst[x].attributes.getNamedItem("max-time").nodeValue,frontend.timer);
+		    }
+		    
+		    var lst = $(".timer-md").get();
+		    for(var x in lst)
+		    {
+			    createTimer("#" + lst[x].id,lst[x].attributes.getNamedItem("max-time").nodeValue,frontend["timer-md"]);
+		    }
+	    });
+	  </script>
+  </body>
+</html>

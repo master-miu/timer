@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+<head>
+	<meta charset = 'utf-8'>
+	<title> bootstrap测试 </title>
+	<link href = 'css/bootstrap.min.css' rel = 'stylesheet' media = 'screen'>
+</head>
+<body style = 'padding-top:40px'>
+	<script src = 'js/jquery.js'></script>
+	<script src = 'js/bootstrap.min.js'></script>
+	<div class="navbar navbar-fixed-top navbar-inverse" >
+	  <div class="navbar-inner">
+	  	<div class = "container">
+			<a class="brand" href="#">Title</a>
+			<ul class="nav">
+			  <li class="active"><a href="#">首页</a></li>
+			  <li><a href="#">Link</a></li>
+			  <li><a href="#">Link</a></li>
+			</ul>
+		</div>
+	  </div>
+	</div>
+	
+	<div class = 'container'>
+		<h1>
+			厦门一中学生会
+		</h1>
+	</div>
+	<div class = 'container'>
+		<div class = 'row-fluid'>
+			<div class = 'span6'>
+				<form>
+				<label>用户名</label>
+				<input type = 'text' name = 'user' />
+				<label>密码</label>
+				<input type = 'password' name = 'pass' /> <br/>
+				<input type = 'submit' class = 'btn btn-primary' value = '提交' />
+				</form>
+			</div>
+			<div class = 'span6'>
+				<table class = 'table table-hover'>
+					<thead >
+					<tr>
+						<td>题目名称</td>
+						<td>输入文件</td>
+						<td>输出文件</td>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>code</td>
+						<td>code.in</td>
+						<td>code.out</td>
+					</tr>
+					<tr>
+						<td>code</td>
+						<td>code.in</td>
+						<td>code.out</td>
+					</tr>
+					<tr>
+						<td>code</td>
+						<td>code.in</td>
+						<td>code.out</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

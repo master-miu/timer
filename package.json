@@ -1,0 +1,10 @@
+{
+  "main" : "index.html",
+  "name" : "Timer",
+  "version" : "1.0",
+  "window" : 
+  {
+  	"toolbar" : false,
+  	"frame" : true
+  }
+}
